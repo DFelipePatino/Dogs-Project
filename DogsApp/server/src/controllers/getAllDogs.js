@@ -9,7 +9,7 @@ const getAllDogs = async () => {
     const { data } = await axios.get(URL)
 
 
-    const dogMap = data.map(dog => { return { name: dog.name, id: dog.id, imagen: dog.image.url, altura: dog.height.metric, peso: dog.weight.metric, age: dog.life_span } })
+    const dogMap = data.map(dog => { return { name: dog.name, id: dog.id, imagen: dog.image.url, altura: dog.height.metric, peso: dog.weight.metric, age: dog.life_span, temperaments: dog.temperament } })
 
     console.log(dogMap, "Esto es dogMap")
 

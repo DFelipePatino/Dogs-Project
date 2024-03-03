@@ -18,7 +18,7 @@ const Cards = ({ onClick, dogs, dogsFromDB }) => {
                             id={dog.id}
                             name={dog.name}
                             image={dog.imagen}
-                            temperament={dog.temperament}
+                            temperament={dog.temperaments}
                             weight={dog.peso}
                             onClick={onClick}
                         />
