@@ -1,0 +1,35 @@
+.pg {
+    position: absolute;
+    bottom: 0;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pageItem {
+    margin: 0 5px;
+    transition: transform 50ms ease;
+}
+
+.pageItem:hover {
+    transform: scale(1.1);
+}
+
+.pageLink {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #4076a3;
+    color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
+    -moz-box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
+    box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
+}
+
+.pageLink:hover {
+    background-color: #f69393;
+}

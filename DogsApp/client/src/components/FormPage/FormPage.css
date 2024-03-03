@@ -1,0 +1,57 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fdd979;
+    height: 100%;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #e07a5f;
+    height: 670px;
+    width: 600px;
+    gap: 5px;
+}
+
+.temperaments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.BackButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.TempBox {
+    display: flex;
+    gap: 14px;
+}
+
+.inputButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.inputButton:hover {
+    background-color: #e0e0e0;
+}
+
+.inputButton:active {
+    background-color: #cccccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
