@@ -3,11 +3,6 @@ import './Card.css';
 
 const Card = ({ dogDB, image, onClick, id, name, temperament, weight }) => {
 
-    console.log(image, "imagen")
-    console.log(name, "name")
-    console.log(dogDB, "dogDB")
-    console.log(weight, "peso")
-
     return (
         dogDB ? (
             <div className='container-card'>
