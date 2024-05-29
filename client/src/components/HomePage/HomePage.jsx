@@ -8,7 +8,7 @@ import './HomePage.css';
 const HomePage = ({ onClick }) => {
 
     const dogs = useSelector((state) => state.dogsCopy);
-    console.log("estes es el estado global", dogs)
+    // console.log("estes es el estado global", dogs)
 
     const dogsFromDB = useSelector((state) => state.dogsDB);
 
@@ -23,7 +23,7 @@ const HomePage = ({ onClick }) => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    console.log("perros por mostras after slice", currentDogs)
+    // console.log("perros por mostras after slice", currentDogs)
 
 
     return (

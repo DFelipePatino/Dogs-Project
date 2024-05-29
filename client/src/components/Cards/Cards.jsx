@@ -3,7 +3,7 @@ import './Cards.css';
 
 const Cards = ({ onClick, dogs, dogsFromDB }) => {
 
-    console.log(dogs, "estos son los perros")
+
     return (
         dogsFromDB && dogsFromDB.length > 0 ? (
             <div className="cards-container">
