@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './LandingPage.css';
 
-const LandingPage = (onHomeClick) => {
+const LandingPage = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="landing-page">
             <div>
@@ -9,9 +13,9 @@ const LandingPage = (onHomeClick) => {
             </div>
 
             <div className="homeButton">
-                <Link to="/home">
-                    <button onClick={onHomeClick}>Home</button>
-                </Link>
+
+                <button onClick={() => { navigate('/home') }}>Home</button>
+
             </div>
         </div>
     );
