@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NavLink, Link } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -66,6 +67,8 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
 
     const [state, setState] = React.useState(false);
 
+    const navigate = useNavigate();
+
     const toggleDrawer = (open) => (event) => {
         if (
             event &&
@@ -86,7 +89,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
     const [term, setTerm] = React.useState('');
 
     const termTrim = term.trim();
-    console.log("este es el termtrim", termTrim)
+    // console.log("este es el termtrim", termTrim)
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -113,19 +116,19 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
             >
                 <List>
                     {['Home', 'Create your Dog!', 'Exit'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                        <ListItem key={text}>
                             <ListItemButton>
                                 {index === 0 ? <NavLink to='/home'>
-                                    <button onClick={handleHomeClick}>Home</button>
+                                    <Button onClick={handleHomeClick}>Home</Button>
                                 </NavLink>
                                     :
                                     index === 1 ? <NavLink to='/form'>
-                                        <button>{text}</button>
+                                        <Button>{text}</Button>
                                     </NavLink>
                                         :
                                         index === 2 ?
                                             <Link to='/'>
-                                                <button>{text}</button>
+                                                <Button>{text}</Button>
                                             </Link>
                                             :
                                             null}
@@ -146,7 +149,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                 role="presentation"
             >
                 <List>
-                    <ListItem disablePadding>
+                    <ListItem >
                         <Sort
                             setApiDbFilter={setApiDbFilter} apiDbFilter={apiDbFilter} setWeigthOrderType={setWeigthOrderType} weigthOrderType={weigthOrderType} setOrderType={setOrderType} orderType={orderType} selectedTemp={selectedTemp} setSelectedTemp={setSelectedTemp}
                         />
@@ -154,7 +157,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
 
                     <br />
 
-                    <ListItem disablePadding>
+                    <ListItem >
                         <Filter
                             selectedTemp={selectedTemp} setSelectedTemp={setSelectedTemp} alltemperaments={alltemperaments} filterDogsByTemp={filterDogsByTemp} handleHomeClick={handleHomeClick}
                         />
@@ -183,7 +186,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                         </IconButton>
 
                         <Typography
-                            onClick={handleHomeClick}
+                            onClick={() => { navigate('/home') }}
                             variant="h6"
                             noWrap
                             component="div"

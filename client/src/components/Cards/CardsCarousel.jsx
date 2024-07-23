@@ -10,60 +10,58 @@ import DogCard from "../Card/DogCard";
 
 function CardsCarousel({ onClick, dogs, dogsFromDB }) {
 
-    // console.log(dogsFromDB, 'dogsFromDB', dogs, 'dogs', 'at CardsCarousel');
+    // console.log(dogs, 'dogs', 'at CardsCarousel');
 
     const settings = {
-        arrows: false,
+        arrows: true,
         className: "center",
         with: "100%",
-        // centerMode: true,
+        centerMode: true,
         centerPadding: "60px",
         lazyLoad: true,
-        dots: false,
+        dots: true,
         infinite: true,
         pauseOnHover: true,
         adaptiveHeight: true,
-        autoplay: false,
-        autoplaySpeed: 4000,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        slidesPerRow: 2,
-        rows: 2,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // slidesPerRow: 2,
+        // rows: 2,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1000,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    rows: 1,
+                    centerMode: false,
                     pauseOnHover: true,
+                    arrows: true,
                 }
             },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    rows: 1,
+                    centerMode: false,
+                    pauseOnHover: true,
+                    arrows: true,
+                }
+            },
+
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 2,
-                    initialSlide: 2,
-                    pauseOnHover: true,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    pauseOnHover: true,
-                }
-            },
-            {
-                breakpoint: 385,
-                settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     rows: 1,
+                    centerMode: false,
                     pauseOnHover: true,
+                    arrows: false,
                 }
             }
         ]
@@ -94,7 +92,7 @@ function CardsCarousel({ onClick, dogs, dogsFromDB }) {
             >
 
                 {dogs?.map((dog) => (
-                    <div className='main-container'>
+                    <div className='main-container' key={dog.id}>
                         <div className="cards-container">
                             <DogCard
                                 key={dog.id}

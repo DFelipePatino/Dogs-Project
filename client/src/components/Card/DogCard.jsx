@@ -4,9 +4,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 
-const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight }) => {
+const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight, lifeSpan }) => {
 
     return (
         dogDB ? (
@@ -28,7 +27,8 @@ const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight }) => {
             </div>
         ) : (
             <Card sx={{ maxWidth: 345, height: 400, marginTop: "10px", fontSize: "18px", backgroundColor: "#e07a5f" }}>
-                <CardActionArea>
+
+                {image &&
                     <CardMedia
                         onClick={() => onClick(id)}
                         component="img"
@@ -36,18 +36,22 @@ const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight }) => {
                         image={image}
                         alt="dog"
                     />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Temperaments: {temperament}
-                            <br />
-                            <br />
-                            Weigth: {weight}kg
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
+                }
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        Temperaments: {temperament}
+                        <br />
+                        <br />
+                        Weigth: {weight}kg
+                        <br />
+                        <br />
+                        Espectativa de Vida: {lifeSpan}
+                    </Typography>
+                </CardContent>
+
             </Card>
 
             // <div className='container-card'>

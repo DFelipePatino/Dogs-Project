@@ -20,8 +20,8 @@ function App() {
   const navigate = useNavigate();
 
   const [selectedTemp, setSelectedTemp] = useState("");
-  const [orderType, setOrderType] = useState("Alphabetic Order");
-  const [weigthOrderType, setWeigthOrderType] = useState("SORT BY WEIGHT");
+  const [orderType, setOrderType] = useState("");
+  const [weigthOrderType, setWeigthOrderType] = useState("");
   const [apiDbFilter, setApiDbFilter] = useState("All");
 
 

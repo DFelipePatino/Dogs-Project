@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import DogCard from "../Card/DogCard";
 import axios from 'axios';
 import './Detail.css';
 
@@ -30,13 +31,21 @@ const Detail = () => {
                         <img src={dog.image.url} alt={dog.name} />
                     </div>
                     <div className="info-container">
+                        <DogCard
+                            name={dog.name}
+                            temperament={dog.temperament}
+                            weight={dog.weight.metric}
+                            lifeSpan={dog.life_span}
+                        />
+                    </div>
+                    {/* <div className="info-container">
                         <h1>{dog.name}</h1>
                         <p>ID: {dog.id}</p>
                         <p>Temperamentos: {dog.temperament}</p>
                         <p>Peso: {dog.weight.metric}</p>
                         <p>Altura: {dog.height.metric}</p>
                         <p>Años de Vida: {dog.life_span}</p>
-                    </div>
+                    </div> */}
                 </div>
             ) : (
                 <h1 className="Loading">Loading...</h1>

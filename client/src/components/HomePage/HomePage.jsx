@@ -4,13 +4,19 @@ import Cards from "../Cards/Cards";
 import CardsCarousel from '../Cards/CardsCarousel';
 import Pages from '../Pages/Pages';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useState } from 'react';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 import './HomePage.css';
 
 const HomePage = ({ onClick }) => {
 
+    const [loadingShown, setLoadingShown] = useState(false);
+    const [homePageGrow, setHomePageGrow] = useState(true);
+
     const dogs = useSelector((state) => state.dogsCopy);
-    // console.log("estes es el estado global", dogs)
+    // console.log("este es el estado global", dogs)
 
     const dogsFromDB = useSelector((state) => state.dogsDB);
 
@@ -27,23 +33,58 @@ const HomePage = ({ onClick }) => {
 
     // console.log("perros por mostras after slice", currentDogs)
 
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoadingShown(false);
+    //     }, 2000)
+    // }
+    //     , [])
+
 
     return (
+        <>
 
+            {!loadingShown ? (
 
-        <div className='homePage'>
-            {/* <Cards onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} /> */}
+                <Grow
+                    in={homePageGrow}
+                    style={{ transformOrigin: '1 1 1' }}
+                    {...(loadingShown ? { timeout: 1500 } : {})}
+                >
+                    <div className='homePage'>
+                        {/* <Cards onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} /> */}
 
-            <CardsCarousel onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} />
+                        <CardsCarousel onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} />
 
-            <div className="pages-wrapper">
-                <Pages
-                    itemsPerPage={itemsPerPage}
-                    totalItems={dogs.length}
-                    paginate={paginate}
-                />
-            </div>
-        </div>
+                        <div className="pages-wrapper">
+                            <Pages
+                                itemsPerPage={itemsPerPage}
+                                totalItems={dogs.length}
+                                paginate={paginate}
+                            />
+                        </div>
+                    </div>
+                </Grow>
+            ) : (
+                <Grow
+                    in={loadingShown}
+                    style={{ transformOrigin: '1 1 1' }}
+                    {...(loadingShown ? { timeout: 1000 } : {})}
+                >
+                    <div className='loading'>
+                        <br />
+                        <br />
+                        Loading...
+                        <br />
+                        <br />
+                        <p>Preparate para una gran experiencia!</p>
+                        <Box sx={{ width: '100%', paddingBottom: "10%" }}>
+                            <LinearProgress />
+                        </Box>
+                    </div>
+                </Grow>
+            )}
+        </>
     );
 }
 
