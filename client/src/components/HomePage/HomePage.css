@@ -1,0 +1,33 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* height: 120%; */
+    width: 100%;
+    background-image: url('../../assets/cute-dogs-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+.pages-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* margin-bottom: 0; */
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #ffd166;
+    color: #ffffff;
+}
