@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FormPage.css';
 import { useDispatch } from 'react-redux';
-import { createDog } from '../../redux/actions';
+// import { createDog } from '../../redux/actions';
 import { Link } from "react-router-dom";
 
 
@@ -66,7 +66,7 @@ const FormPage = ({ alltemperaments, onHomeClick }) => {
             imagen: imagen,
             temperamentNames: temperamentNames,
         };
-        dispatch(createDog(dogData));
+        // dispatch(createDog(dogData));
         setIsSubmitted(true);
 
     };

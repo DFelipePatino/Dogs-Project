@@ -1,5 +1,7 @@
 import React from 'react';
+import { Grow } from '@mui/material';
 import Cards from "../Cards/Cards";
+import CardsCarousel from '../Cards/CardsCarousel';
 import Pages from '../Pages/Pages';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -27,14 +29,20 @@ const HomePage = ({ onClick }) => {
 
 
     return (
-        <div className='homePage'>
-            <Cards onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} />
 
-            <Pages
-                itemsPerPage={itemsPerPage}
-                totalItems={dogs.length}
-                paginate={paginate}
-            />
+
+        <div className='homePage'>
+            {/* <Cards onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} /> */}
+
+            <CardsCarousel onClick={onClick} dogs={currentDogs} dogsFromDB={dogsFromDB} />
+
+            <div className="pages-wrapper">
+                <Pages
+                    itemsPerPage={itemsPerPage}
+                    totalItems={dogs.length}
+                    paginate={paginate}
+                />
+            </div>
         </div>
     );
 }

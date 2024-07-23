@@ -1,16 +1,35 @@
+.mainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+    position: relative;
+    bottom: 0;
+}
+
 .pg {
     position: absolute;
     bottom: 0;
+    height: 8%;
+    max-width: fit-content;
 }
 
 .pagination {
     display: flex;
     list-style: none;
     padding: 0;
+    /* margin: 0 auto; */
+    justify-content: center;
+    /* align-items: center; */
+    max-width: fit-content;
+    flex-wrap: wrap;
 }
 
 .pageItem {
-    margin: 0 5px;
+    margin: 5px;
+    margin-bottom: 12px;
     transition: transform 50ms ease;
 }
 
@@ -21,7 +40,7 @@
 .pageLink {
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #4076a3;
+    background-color: rgb(25, 118, 210);
     color: #000000;
     border-radius: 5px;
     cursor: pointer;
@@ -32,4 +51,25 @@
 
 .pageLink:hover {
     background-color: #f69393;
+}
+
+/* @media screen and (max-width: 1000px) {
+    .pg {
+        position: absolute;
+        bottom: 0;
+        height: 8%;
+        max-width: fit-content;
+    }
+
+} */
+
+
+@media screen and (max-width: 400px) {
+    .pg {
+        position: absolute;
+        bottom: 0;
+        height: 8%;
+        max-width: fit-content;
+    }
+
 }

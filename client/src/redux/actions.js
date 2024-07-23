@@ -121,12 +121,12 @@ export const getTemperaments = () => {
     }
 }
 
-export const createDog = (dog) => {
-    return async (dispatch) => {
-        await axios.post('http://localhost:3001/dogs', dog)
-            .catch(error => console.log(error))
-    }
-}
+// export const createDog = (dog) => {
+//     return async (dispatch) => {
+//         await axios.post('http://localhost:3001/dogs', dog)
+//             .catch(error => console.log(error))
+//     }
+// }
 
 export const sortNames = (order) => {
     console.log(order, "order")

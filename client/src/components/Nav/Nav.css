@@ -1,15 +1,16 @@
-.NavBar {
+/* .NavBar {
     background-color: #ffd166;
     padding: 10px;
-}
+    max-width: fit-content;
+} */
 
-.nav-container {
+/* .nav-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
+} */
 
-button {
+/* button {
     background-color: #e07a5f;
     color: #fff;
     border: none;
@@ -18,8 +19,8 @@ button {
     font-size: 16px;
     margin: 5px;
     border-radius: 5px;
-}
+} */
 
-button:hover {
+/* button:hover {
     background-color: #d45b3e;
-}
+} */
