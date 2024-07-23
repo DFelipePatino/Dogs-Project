@@ -11,7 +11,7 @@ const router = Router();
 router.get("/dogs", getDogs);
 router.get("/dogs/name", dogsByName);
 router.get("/dogs/:idRaza", dogsByID);
-router.post("/dogs", createDog);
+// router.post("/dogs", createDog);
 
 router.get("/temperaments", getTemperaments);
 

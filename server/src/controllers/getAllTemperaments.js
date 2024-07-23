@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Temperaments } = require('../db');
+// const { Temperaments } = require('../db');
 
 const getAllTemperaments = async () => {
     const URL = 'https://api.thedogapi.com/v1/breeds?api_key=';
@@ -20,22 +20,24 @@ const getAllTemperaments = async () => {
         }
     })
     // orgnizo array para que este sea creado en orden alfabetico 
-    temperaments.sort();
+    const dogTemperaments = temperaments.sort();
 
-    for (let temp of temperaments) {
-        await Temperaments.findOrCreate({ where: { name: temp } });
-    }
+    // for (let temp of temperaments) {
+    //     await Temperaments.findOrCreate({ where: { name: temp } });
+    // }
 
-    //aqui traigo todos los temperaments y los organizo
-    const dbTemperaments = await Temperaments.findAll({
-        order: [
-            ['name', 'ASC']
-        ]
-    });
+    // //aqui traigo todos los temperaments y los organizo
+    // const dbTemperaments = await Temperaments.findAll({
+    //     order: [
+    //         ['name', 'ASC']
+    //     ]
+    // });
 
-    let dbTemperamentsNames = dbTemperaments.map(temp => temp.name)
+    // let dbTemperamentsNames = dbTemperaments.map(temp => temp.name)
 
-    return dbTemperamentsNames
+    // return dbTemperamentsNames
+
+    return dogTemperaments
 }
 
 module.exports = { getAllTemperaments }

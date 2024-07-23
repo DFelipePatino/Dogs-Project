@@ -1,9 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Nav from './components/Nav/Nav';
+import SearchAppBar from './components/Nav/Nav';
 import LandingPage from './components/LandingPage/LandingPage';
 import { useState } from 'react';
 import Detail from './components/Detail/Detail';
+import CardsCarousel from '../src/components/Cards/CardsCarousel';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, getDogsByName, getTemperaments, filterTemps } from './redux/actions';
@@ -19,8 +20,8 @@ function App() {
   const navigate = useNavigate();
 
   const [selectedTemp, setSelectedTemp] = useState("");
-  const [orderType, setOrderType] = useState("Alphabetic Order");
-  const [weigthOrderType, setWeigthOrderType] = useState("SORT BY WEIGHT");
+  const [orderType, setOrderType] = useState("");
+  const [weigthOrderType, setWeigthOrderType] = useState("");
   const [apiDbFilter, setApiDbFilter] = useState("All");
 
 
@@ -59,11 +60,13 @@ function App() {
   return (
     <>
 
-      {location.pathname !== "/" && location.pathname !== "/form" && <Nav setApiDbFilter={setApiDbFilter} apiDbFilter={apiDbFilter} setWeigthOrderType={setWeigthOrderType} weigthOrderType={weigthOrderType} setOrderType={setOrderType} orderType={orderType} selectedTemp={selectedTemp} setSelectedTemp={setSelectedTemp} resetSelection={resetSelection} alltemperaments={alltemperaments} filterDogsByTemp={filterDogsByTemp}
+      {location.pathname !== "/" && location.pathname !== "/form" && <SearchAppBar setApiDbFilter={setApiDbFilter} apiDbFilter={apiDbFilter} setWeigthOrderType={setWeigthOrderType} weigthOrderType={weigthOrderType} setOrderType={setOrderType} orderType={orderType} selectedTemp={selectedTemp} setSelectedTemp={setSelectedTemp} resetSelection={resetSelection} alltemperaments={alltemperaments} filterDogsByTemp={filterDogsByTemp}
         onSearch={onSearch} onHomeClick={onHomeClick} />}
 
       <Routes>
+        <Route path='nav' element={<SearchAppBar onHomeClick={onHomeClick} />} />
         <Route path='/' element={<LandingPage onHomeClick={onHomeClick} />} />
+        <Route path='/test' element={<CardsCarousel />} />
         <Route path='/home' element={<HomePage onClick={onClick} />} />
         <Route path="/dogs/:id" element={<Detail />} />
         <Route path='/form' element={<FormPage onHomeClick={onHomeClick} alltemperaments={alltemperaments} />} />

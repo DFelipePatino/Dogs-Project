@@ -1,14 +1,23 @@
 .main-container {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    height: 100%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* width: 80%; */
+    /* height: 100%; */
     overflow: auto;
     border-radius: 20px;
-    flex-direction: row;
-    align-content: center;
-    flex-wrap: nowrap;
-    align-items: baseline;
+    /* margin: 10px; */
+    /* flex-direction: row; */
+    /* align-content: center; */
+    /* flex-wrap: nowrap; */
+    /* align-items: baseline; */
+}
+
+
+.slick-slider {
+    margin: 60px;
+    width: 92%;
+    margin-top: 80px;
+    height: 32%;
 }
 
 

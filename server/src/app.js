@@ -4,17 +4,17 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
-require('./db.js');
+// require('./db.js');
 
 const cors = require('cors');
 
 const server = express();
 
-server.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
-}));
+// server.use(cors({
+//   origin: 'http://localhost:5173',
+//   credentials: true,
+//   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
+// }));
 
 server.name = 'API';
 

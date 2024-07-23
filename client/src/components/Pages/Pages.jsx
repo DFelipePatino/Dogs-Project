@@ -1,5 +1,8 @@
 import React from "react";
 import style from "./Pages.module.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Pages = ({ itemsPerPage, totalItems, paginate }) => {
     const pageNumbers = [];
@@ -9,7 +12,9 @@ const Pages = ({ itemsPerPage, totalItems, paginate }) => {
     }
 
     return (
-        <nav className={style.pg}>
+
+        <div >
+            {/* <nav className={style.pg}> */}
             <ul className={style.pagination}>
                 {pageNumbers.map((number) => (
                     <li key={number} className={style.pageItem}>
@@ -23,7 +28,8 @@ const Pages = ({ itemsPerPage, totalItems, paginate }) => {
                     </li>
                 ))}
             </ul>
-        </nav>
+            {/* </nav> */}
+        </div>
     );
 };
 

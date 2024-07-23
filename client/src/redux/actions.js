@@ -55,7 +55,7 @@ export const getDogsByName = (name) => {
 
                 const allDogs = await axios('http://localhost:3001/dogs');
                 dogsToFilter = allDogs.data;
-                console.log(dogsToFilter, "dogsToFilter")
+                // console.log(dogsToFilter, "dogsToFilter")
             }
 
             const nameFilteredDogs = await axios(URL);
@@ -86,21 +86,25 @@ export const filterTemps = (temperament) => {
         try {
             const { dogsCopy } = getState();
 
-            let dogsToFilter;
+            // let dogsToFilter;
 
 
-            if (dogsCopy.length > 0) {
-                dogsToFilter = dogsCopy;
+            // if (dogsCopy.length > 0) {
+            //     dogsToFilter = dogsCopy;
 
 
-            } else if (dogsCopy.length === 0) {
-                window.alert(`No hay perros para filtrar, tu busqueda por ${temperament} se realizara ahora`)
+            // } else if (dogsCopy.length === 0) {
+            //     window.alert(`No hay perros para filtrar, tu busqueda por ${temperament} se realizara ahora`)
 
-                const allDogs = await axios('http://localhost:3001/dogs');
-                dogsToFilter = allDogs.data;
+            //     const allDogs = await axios('http://localhost:3001/dogs');
+            //     dogsToFilter = allDogs.data;
+            // }
+
+            const filteredDogs = dogsCopy.filter((dog) => dog.temperaments && dog.temperaments.includes(temperament));
+
+            if (filteredDogs.length === 0) {
+                window.alert(`No hay perros que tengan el temperamento ${temperament}`)
             }
-
-            const filteredDogs = dogsToFilter.filter((dog) => dog.temperament && dog.temperament.includes(temperament));
 
             dispatch({ type: DOGS_FILTERED, payload: filteredDogs });
         } catch (error) {
@@ -121,15 +125,15 @@ export const getTemperaments = () => {
     }
 }
 
-export const createDog = (dog) => {
-    return async (dispatch) => {
-        await axios.post('http://localhost:3001/dogs', dog)
-            .catch(error => console.log(error))
-    }
-}
+// export const createDog = (dog) => {
+//     return async (dispatch) => {
+//         await axios.post('http://localhost:3001/dogs', dog)
+//             .catch(error => console.log(error))
+//     }
+// }
 
 export const sortNames = (order) => {
-    console.log(order, "order")
+    // console.log(order, "order")
 
     return (dispatch, getState) => {
         const { dogsCopy } = getState();
@@ -142,7 +146,7 @@ export const sortNames = (order) => {
             orderCopy.sort((a, b) => b.id - a.id);
         }
 
-        console.log(orderCopy, "dogsCopy Action names")
+        // console.log(orderCopy, "dogsCopy Action names")
         return dispatch({ type: SORT_NAMES, payload: orderCopy });
     }
 };
@@ -160,7 +164,7 @@ export const sortSource = (idType) => {
         } else if (idType === "DB") {
             const filteredDb = dogs.filter((dog) => typeof dog.id === "string");
 
-            console.log(filteredDb, "asi se ve desde la BD")
+            // console.log(filteredDb, "asi se ve desde la BD")
             dispatch({ type: FILTER_BY_DB, payload: filteredDb });
         }
     };
@@ -170,6 +174,7 @@ export const sortSource = (idType) => {
 
 
 export const orderDogByWeight = (payload) => {
+    // console.log(payload, "payload en actions");
     return (dispatch, getState) => {
         try {
             const { dogsCopy } = getState();
@@ -181,22 +186,24 @@ export const orderDogByWeight = (payload) => {
                         return 0;
                     }
                     const parts = weightString.split(" - ").map(Number);
+
                     return (parts[0] + parts[1]) / 2;
                 };
 
-                const averageWeightA = a.weight ? parseWeight(a.weight.metric) : 0;
-                const averageWeightB = b.weight ? parseWeight(b.weight.metric) : 0;
+                const averageWeightA = a.peso ? parseWeight(a.peso) : 0;
 
-                if (payload === "WEIGTH ⬆") {
+                const averageWeightB = b.peso ? parseWeight(b.peso) : 0;
+
+
+                if (payload === "WEIGHT ⬆") {
                     return averageWeightA - averageWeightB;
-                } else if (payload === "WEIGTH ⬇") {
+                } else if (payload === "WEIGHT ⬇") {
                     return averageWeightB - averageWeightA;
                 } else {
                     return 0;
                 }
 
             });
-            console.log(dogsWeight, "dogsWeight Action weight")
 
             dispatch({ type: SORT_WEIGHT, payload: dogsWeight });
         } catch (error) {
@@ -204,6 +211,7 @@ export const orderDogByWeight = (payload) => {
         }
     };
 }
+
 
 
 // export const sortNames = (order) => {
