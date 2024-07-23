@@ -1,19 +1,19 @@
 const axios = require("axios");
-const { Dog } = require("../db");
-const Op = require('sequelize').Op; // Asegúrate de que esto esté definido
+// const { Dog } = require("../db");
+// const Op = require('sequelize').Op; // Asegúrate de que esto esté definido
 
 const getDogsByName = async (name) => {
     const lowerCaseName = name.toLowerCase();
     const URL = `https://api.thedogapi.com/v1/breeds/search?q=${lowerCaseName}`;
     const { data: apiData } = await axios.get(URL);
 
-    const dogsFromDB = await Dog.findAll({
-        where: {
-            name: {
-                [Op.iLike]: '%' + name + '%'
-            }
-        }
-    });
+    // const dogsFromDB = await Dog.findAll({
+    //     where: {
+    //         name: {
+    //             [Op.iLike]: '%' + name + '%'
+    //         }
+    //     }
+    // });
 
 
 
@@ -31,7 +31,8 @@ const getDogsByName = async (name) => {
         return { ...apiDog, image };
     }));
 
-    const allDogs = [...apiDogsWithImages, ...dogsFromDB];
+    // const allDogs = [...apiDogsWithImages, ...dogsFromDB];
+    const allDogs = [...apiDogsWithImages];
 
     if (allDogs.length === 0) {
         return `No se encontro perrito con el nombre ${name}`;

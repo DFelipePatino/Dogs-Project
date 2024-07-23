@@ -1,5 +1,5 @@
 const axios = require("axios")
-const { Dog, Temperaments } = require('../db.js');
+// const { Dog, Temperaments } = require('../db.js');
 
 const API_KEY = process.env.API_KEY;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
@@ -13,13 +13,14 @@ const getAllDogs = async () => {
 
     console.log(dogMap, "Esto es dogMap")
 
-    const allDogsDB = await Dog.findAll({
-        include: {
-            model: Temperaments,
-        }
-    })
+    // const allDogsDB = await Dog.findAll({
+    //     include: {
+    //         model: Temperaments,
+    //     }
+    // })
 
-    const allDogs = [...allDogsDB, ...dogMap]
+    // const allDogs = [...allDogsDB, ...dogMap]
+    const allDogs = [...dogMap]
 
     return allDogs
 

@@ -1,20 +1,20 @@
-const { Dog, Temperaments } = require('../db.js');
+// const { Dog, Temperaments } = require('../db.js');
 
-const postNewDog = async (dogData, temperamentNames) => {
-    const newDog = await Dog.create(dogData);
+// const postNewDog = async (dogData, temperamentNames) => {
+//     const newDog = await Dog.create(dogData);
 
-    for (let name of temperamentNames) {
-        let temperament = await Temperaments.findOne({ where: { name } });
-        if (!temperament) {
-            temperament = await Temperaments.create({ name });
-        }
-        await newDog.addTemperament(temperament);
-    }
+//     for (let name of temperamentNames) {
+//         let temperament = await Temperaments.findOne({ where: { name } });
+//         if (!temperament) {
+//             temperament = await Temperaments.create({ name });
+//         }
+//         await newDog.addTemperament(temperament);
+//     }
 
-    return newDog;
-}
+//     return newDog;
+// }
 
-module.exports = { postNewDog }
+// module.exports = { postNewDog }
 
 
 // const { Dog, Temperament } = require("../db.js");
