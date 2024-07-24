@@ -3,18 +3,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-
-// require('./db.js');
-
 const cors = require('cors');
 
 const server = express();
 
-// server.use(cors({
-//   origin: 'http://localhost:5173',
-//   credentials: true,
-//   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
-// }));
+// Configure CORS
+server.use(cors({
+  origin: 'https://dogsproject-rr4u.onrender.com',
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE']
+}));
 
 server.name = 'API';
 
@@ -23,12 +21,18 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 
+// Allow custom headers
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
+// Use defined routes
 server.use('/', routes);
 
+// Add a default route to handle the root path
+server.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 module.exports = server;
