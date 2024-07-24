@@ -46,9 +46,7 @@ const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight, lifeSpa
                         <br />
                         <br />
                         Weigth: {weight}kg
-                        <br />
-                        <br />
-                        Espectativa de Vida: {lifeSpan}
+
                     </Typography>
                 </CardContent>
 
