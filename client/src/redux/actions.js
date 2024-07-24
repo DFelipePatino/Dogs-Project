@@ -10,9 +10,11 @@ import { SORT_WEIGHT } from "./action-types";
 import { GET_DOGS2 } from "./action-types";
 import axios from "axios";
 
+baseUrl = "https://dogs-project-d53t.onrender.com";
+
 export const getDogs = () => {
     return (dispatch) => {
-        axios('http://localhost:3001/dogs')
+        axios(`${baseUrl}/dogs`)
             .then(({ data }) => {
                 const filteredApi = data.filter((dog) => typeof dog.id === "number");
                 dispatch({ type: GET_DOGS, payload: filteredApi });
@@ -43,7 +45,7 @@ export const getDogsByName = (name) => {
             let dogsToFilter;
 
             const lowerCaseName = name.toLowerCase();
-            const URL = `http://localhost:3001/dogs/name?name=${lowerCaseName}`;
+            const URL = `${baseUrl}/dogs/name?name=${lowerCaseName}`;
 
 
             if (dogsCopy.length > 0) {
@@ -53,7 +55,7 @@ export const getDogsByName = (name) => {
 
                 window.alert(`No hay perros para filtrar, tu busqueda por ${name} se realizara ahora`)
 
-                const allDogs = await axios('http://localhost:3001/dogs');
+                const allDogs = await axios(`${baseUrl}/dogs`);
                 dogsToFilter = allDogs.data;
                 // console.log(dogsToFilter, "dogsToFilter")
             }
@@ -117,7 +119,7 @@ export const filterTemps = (temperament) => {
 
 export const getTemperaments = () => {
     return (dispatch) => {
-        axios('http://localhost:3001/temperaments')
+        axios(`${baseUrl}/temperaments`)
             .then(({ data }) => {
                 return dispatch({ type: GET_TEMPERAMENTS, payload: data })
             })
