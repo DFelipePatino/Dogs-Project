@@ -10,7 +10,7 @@ import { SORT_WEIGHT } from "./action-types";
 import { GET_DOGS2 } from "./action-types";
 import axios from "axios";
 
-baseUrl = "https://dogs-project-d53t.onrender.com";
+const baseUrl = "https://dogs-project-d53t.onrender.com";
 
 export const getDogs = () => {
     return (dispatch) => {
