@@ -32,13 +32,15 @@
 require('dotenv').config();
 const server = require('./src/app.js');
 
+const port = process.env.PORT || 3001;
+
 // Remove or comment out the database connection part
 // const { conn } = require('./src/db.js');
 
 // Syncing all the models at once (removed)
 // conn.sync({ force: true }).then(() => {
-server.listen(3001, () => {
-  console.log('%s listening at 3001'); // eslint-disable-line no-console
+server.listen(port, () => {
+  console.log(`Server listening at ${port}`); // eslint-disable-line no-console
 });
 // });
 
