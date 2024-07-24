@@ -29,6 +29,7 @@
 
 
 
+require('dotenv').config();
 const server = require('./src/app.js');
 
 // Remove or comment out the database connection part
