@@ -33,7 +33,7 @@ const Detail = () => {
         <>
             {dog.name ? (
                 <Container
-                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '200px' }}
+                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '60px' }}
                 >
                     <Box
                         sx={{
@@ -83,23 +83,23 @@ const Detail = () => {
                                 <Typography variant="body1" color="text.secondary">
                                     Weight: {dog.weight.metric} kg
                                 </Typography>
-                                <br />
+
                                 <Typography variant="body1" color="text.secondary">
                                     Height: {dog.height.metric} m
                                 </Typography>
-                                <br />
+                                {/* <br />
                                 <Typography variant="body1" color="text.secondary">
                                     Origin: {dog.country_code}
-                                </Typography>
+                                </Typography> */}
                                 <br />
                                 <Typography variant="body1" color="text.secondary">
                                     Breed Group: {dog.breed_group}
                                 </Typography>
-                                <br />
+
                                 <Typography variant="body1" color="text.secondary">
                                     Bred for: {dog.bred_for}
                                 </Typography>
-                                <br />
+
                                 <Typography variant="body1" color="text.secondary">
                                     Life Span: {dog.life_span}
                                 </Typography>
