@@ -8,8 +8,10 @@ const Detail = () => {
     const { id } = useParams();
     const [dog, setDog] = useState({});
 
+    const baseUrl = "https://dogs-project-d53t.onrender.com";
+
     useEffect(() => {
-        axios.get(`http://localhost:3001/dogs/${id}`)
+        axios.get(`${baseUrl}/${id}`)
             .then(({ data }) => {
                 if (data.data.length > 0 && data.data[0].name) {
                     //validamos que el id exista y que tenga un nombre
