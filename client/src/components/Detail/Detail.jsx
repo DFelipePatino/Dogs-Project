@@ -11,7 +11,7 @@ const Detail = () => {
     const baseUrl = "https://dogs-project-d53t.onrender.com";
 
     useEffect(() => {
-        axios.get(`${baseUrl}/${id}`)
+        axios.get(`${baseUrl}/dogs/${id}`)
             .then(({ data }) => {
                 if (data.data.length > 0 && data.data[0].name) {
                     //validamos que el id exista y que tenga un nombre
