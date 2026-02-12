@@ -12,8 +12,8 @@ const Detail = () => {
     const { id } = useParams();
     const [dog, setDog] = useState(null);
 
-    // const baseUrl = "https://dogs-project-d53t.onrender.com";
-    const baseUrl = "http://localhost:3001";
+    const baseUrl = "https://dogs-project-d53t.onrender.com";
+    // const baseUrl = "http://localhost:3001";
 
     useEffect(() => {
         axios
