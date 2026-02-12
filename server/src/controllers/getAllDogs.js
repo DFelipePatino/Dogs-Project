@@ -9,11 +9,30 @@ if (!API_KEY) {
 }
 
 
-const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
+// const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
+
+// const getAllDogs = async () => {
+
+//     const { data } = await axios.get(URL,
+//         {
+//             headers: {
+//                 "X-Api-Key": process.env.API_KEY
+//             }
+//         }
+//     );
+
+const URL = "https://api.thedogapi.com/v1/breeds";
 
 const getAllDogs = async () => {
+    console.log("get dogs ran")
+    const { data } = await axios.get(URL, {
+        headers: {
+            "X-Api-Key": process.env.API_KEY
+        }
+    });
 
-    const { data } = await axios.get(URL)
+
+
 
 
     const dogMap = data.map(dog => { return { name: dog.name, id: dog.id, imagen: dog.image.url, altura: dog.height.metric, peso: dog.weight.metric, age: dog.life_span, temperaments: dog.temperament } })
@@ -27,7 +46,7 @@ const getAllDogs = async () => {
 
     // const allDogs = [...allDogsDB, ...dogMap]
     const allDogs = [...dogMap]
-
+    console.log(allDogs, 'perros en el controllerr')
     return allDogs
 
 }

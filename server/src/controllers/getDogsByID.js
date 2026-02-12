@@ -1,35 +1,34 @@
-const axios = require("axios")
-// const { Dog } = require("../db");
+const axios = require("axios");
 
+const API_KEY = process.env.API_KEY;
+
+if (!API_KEY) {
+    console.error("API_KEY is not set");
+    process.exit(1);
+}
 
 const getDogsByID = async (idRaza) => {
-    const API_KEY = process.env.API_KEY;
-    const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
+    try {
+        const URL = `https://api.thedogapi.com/v1/breeds/${idRaza}`;
 
-    let dogFromAPI;
-    // let dogsFromDB;
+        const { data } = await axios.get(URL, {
+            headers: {
+                "x-api-key": API_KEY,
+            },
+        });
 
-    const { data } = await axios.get(URL);
-
-    if (!isNaN(idRaza)) {
-        dogFromAPI = data.find(dog => dog.id === parseInt(idRaza));
-        if (dogFromAPI) {
-            return { data: [dogFromAPI] };
+        // If API returns empty or invalid
+        if (!data || !data.id) {
+            throw new Error("Dog not found");
         }
-        // } else {
-        //     dogsFromDB = await Dog.findAll({
-        //         where: {
-        //             id: idRaza
-        //         }
-        //     });
-        //     if (dogsFromDB.length > 0) {
-        //         return { data: dogsFromDB };
-        //     }
+
+        return data;
+
+    } catch (error) {
+        return {
+            error: `No se encontró perrito con el id ${idRaza}`,
+        };
     }
-
-    return { error: `No se encontro perrito con el id ${idRaza}` };
-
-
 };
 
-module.exports = getDogsByID
+module.exports = getDogsByID;
