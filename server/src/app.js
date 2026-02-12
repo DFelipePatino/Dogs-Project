@@ -10,7 +10,8 @@ const server = express();
 // Configure CORS
 const allowedOrigins = [
   // "http://localhost:5175",
-  "https://dogsproject-rr4u.onrender.com"
+  "https://dogsproject-rr4u.onrender.com",
+  "https://danielpatinoportfolio.onrender.com/"
 ];
 
 server.use(
