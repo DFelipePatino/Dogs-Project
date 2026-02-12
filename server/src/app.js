@@ -11,7 +11,7 @@ const server = express();
 const allowedOrigins = [
   // "http://localhost:5175",
   "https://dogsproject-rr4u.onrender.com",
-  "https://danielpatinoportfolio.onrender.com/"
+  "https://danielpatinoportfolio.onrender.com"
 ];
 
 server.use(
