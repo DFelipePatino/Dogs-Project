@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getDogs());
-    dispatch(getTemperaments());
+    // dispatch(getTemperaments());
     setReload(false);
   }, [dispatch, reload]);
 
@@ -44,6 +44,7 @@ function App() {
 
   const onSearch = (termTrim) => {
     dispatch(getDogsByName(termTrim));
+    console.log(termTrim, 'termtrim in App')
   };
 
   const filterDogsByTemp = (dogTemp) => {

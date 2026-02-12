@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FormPage.css';
 import { useDispatch } from 'react-redux';
 import { Grow } from '@mui/material';
@@ -11,6 +11,7 @@ const FormPage = ({ alltemperaments, onHomeClick }) => {
 
     const [Submitted, setIsSubmitted] = useState(false);
     const [formPageGrow, setFormPageGrow] = useState(true);
+    const [dbMessageGrow, setDbMessageGrow] = useState(false);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -23,6 +24,14 @@ const FormPage = ({ alltemperaments, onHomeClick }) => {
     console.log(temperamentNames, "temperamentNames")
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setTimeout(() => {
+            setDbMessageGrow(true)
+        }, 1500);
+    })
+
+
 
     const handleRemoveTemperament = (temperament) => {
         setTemperamentNames(temperamentNames.filter(t => t !== temperament));
@@ -87,6 +96,23 @@ const FormPage = ({ alltemperaments, onHomeClick }) => {
             <div className='form-container'>
 
                 <h1>Create your Dog!</h1>
+
+                {dbMessageGrow ?
+                    <Grow
+                        in={dbMessageGrow}
+                        style={{ transformOrigin: '1 1 1' }}
+                        {...(formPageGrow ? { timeout: 1000 } : {})}
+                    >
+                        <div>
+                            <h2 style={{ textAlign: "center" }}>Sorry!</h2>
+
+                            <h2 style={{ textAlign: "center" }}>At the moment we dont have DB connection. </h2>
+                        </div>
+                    </Grow>
+                    : null}
+
+
+
 
                 {Submitted && <p>Has creado a tu perro!</p>}
 

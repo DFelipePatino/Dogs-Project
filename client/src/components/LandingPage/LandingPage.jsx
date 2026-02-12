@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 // import { set } from "../../../../server/src/app";
 
 const LandingPage = () => {
-    
+
     const navigate = useNavigate();
 
     const [useEffectState, setUseEffectState] = useState(false);
@@ -18,20 +18,25 @@ const LandingPage = () => {
 
     const allDogs = useSelector(state => state.dogs);
     console.log(allDogs, 'allDogs');
-    
-    
-    useEffect(() => {
-        if (useEffectState && allDogs.length > 0) {
-            navigate('/home');
-        }
-    }, [useEffectState, allDogs.length]
-    );
+
+
+    // useEffect(() => {
+    //     if (useEffectState && allDogs.length > 0) {
+    //         navigate('/home');
+    //     }
+    // }, [useEffectState, allDogs.length]
+    // );
+
+
 
     const handleClick = () => {
         setUseEffectState(true);
         Swal.fire({
             title: 'Atención!',
-            text: 'This instance will spin down with inactivity, which can delay requests by 50 seconds or more. Thank you for your patience. - Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes en 50 segundos o más. Gracias por su paciencia.',
+            html: `
+                This instance will spin down with inactivity, which can delay requests by a few seconds. Thank you for your patience.<br><br>
+                Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes por algunos segundos. Gracias por su paciencia.
+            `,
             icon: 'warning',
             showCancelButton: false,
             confirmButtonColor: '#3085d6',
@@ -39,6 +44,9 @@ const LandingPage = () => {
         }).then(() => {
             if (allDogs.length === 0) {
                 setLoadingShown(true);
+                setTimeout(() => {
+                    alert("No dogs are coming from the data base")
+                }, 10000);
             } else {
                 setLoadingShown(true);
                 setTimeout(() => {

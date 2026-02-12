@@ -144,7 +144,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
 
             <Divider />
 
-            <Box
+            {/* <Box
                 sx={{ width: 'auto' }}
                 role="presentation"
             >
@@ -163,16 +163,15 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                         />
                     </ListItem>
                 </List>
-            </Box>
+            </Box> */}
         </>
     );
 
 
     return (
-        <div
-            style={{ position: 'fixed', top: 0, width: '100%', zIndex: 1000 }}>
+        <div>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -186,7 +185,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                         </IconButton>
 
                         <Typography
-                            onClick={() => { navigate('/home') }}
+                            onClick={handleHomeClick}
                             variant="h6"
                             noWrap
                             component="div"
@@ -241,6 +240,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                     </React.Fragment>
                     {/* ))} */}
                 </div>
+                <Toolbar />
             </Box>
         </div>
 

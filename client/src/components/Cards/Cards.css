@@ -1,64 +1,163 @@
-.main-container {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* width: 80%; */
-    /* height: 100%; */
-    overflow: auto;
-    border-radius: 20px;
-    /* margin: 10px; */
-    /* flex-direction: row; */
-    /* align-content: center; */
-    /* flex-wrap: nowrap; */
-    /* align-items: baseline; */
+/* Container */
+.slider-container {
+    width: 100%;
+    padding: 40px 20px 60px;
+    box-sizing: border-box;
 }
 
-
-.slick-slider {
-    margin: 60px;
-    width: 92%;
-    margin-top: 80px;
-    height: 32%;
+/* Each slide spacing */
+.slide {
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
-
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: auto;
-    border-radius: 20px;
-    gap: 40px;
-}
-
-.card {
-    background-color: #ffd166;
-    border: 1px solid #e07a5f;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.card img {
+.slide>* {
+    width: 100%;
     max-width: 100%;
+}
+
+/* Slick list fixes */
+.slick-list {
+    padding-bottom: 30px;
+    margin: 0 -12px;
+}
+
+.slick-track {
+    display: flex;
+    align-items: stretch;
+}
+
+.slick-slide {
     height: auto;
-    border-radius: 5px;
 }
 
-.card h3 {
-    margin-top: 10px;
-    font-size: 18px;
+.slick-slide>div {
+    height: 100%;
+}
+
+/* Arrow styling */
+.slick-prev,
+.slick-next {
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 40px;
     color: #e07a5f;
+    opacity: 0.8;
 }
 
-.card p {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
+.slick-prev:hover:before,
+.slick-next:hover:before {
+    opacity: 1;
+    color: #f4a261;
+}
+
+/* Dots positioning */
+.slick-dots {
+    bottom: 10px;
+}
+
+.slick-dots li {
+    margin: 0 6px;
+}
+
+.slick-dots li button {
+    padding: 0;
+    width: 12px;
+    height: 12px;
+}
+
+.slick-dots li button:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #bbb;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button:before {
+    background-color: #e07a5f;
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+}
+
+/* Hover effect */
+.slick-dots li button:hover:before {
+    background-color: #f4a261;
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .slick-prev {
+        left: -30px;
+    }
+
+    .slick-next {
+        right: -30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .slick-prev {
+        left: -20px;
+    }
+
+    .slick-next {
+        right: -20px;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-container {
+        padding: 20px 10px 40px;
+    }
+
+    .slide {
+        padding: 0 8px;
+    }
+
+    .slick-list {
+        margin: 0 -8px;
+    }
+}
+
+
+.cards-page {
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+/* Grid layout — MUCH safer than flex for cards */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    justify-items: center;
+}
+
+/* Controls individual card size */
+.card-wrapper {
+    width: 100%;
+    max-width: 280px;
 }

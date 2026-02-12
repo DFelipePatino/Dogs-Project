@@ -11,18 +11,29 @@ import { GET_DOGS2 } from "./action-types";
 import axios from "axios";
 
 const baseUrl = "https://dogs-project-d53t.onrender.com";
+// const baseUrl = "http://localhost:3001";
 
-export const getDogs = () => {
-    return (dispatch) => {
-        axios(`${baseUrl}/dogs`)
-            .then(({ data }) => {
-                const filteredApi = data.filter((dog) => typeof dog.id === "number");
-                dispatch({ type: GET_DOGS, payload: filteredApi });
-                dispatch({ type: GET_DOGS2, payload: data });
-            })
-            .catch(error => console.log(error));
+
+export const getDogs = () => async (dispatch) => {
+    try {
+        const { data } = await axios(`${baseUrl}/dogs`);
+
+        if (!Array.isArray(data)) {
+            throw new Error("Invalid response format");
+        }
+
+        const apiDogs = data.filter(dog => typeof dog.id === "number");
+
+        dispatch({ type: GET_DOGS, payload: data });
+        dispatch({ type: GET_DOGS2, payload: data });
+
+        return data; // optional
+    } catch (error) {
+        console.error("GET_DOGS failed:", error.message);
     }
-}
+};
+
+
 
 // export const getDogsByName = (dog) => {
 //     const lowerCaseName = dog.toLowerCase();
@@ -41,6 +52,7 @@ export const getDogsByName = (name) => {
         try {
 
             const { dogsCopy } = getState();
+            console.log(dogsCopy, "dogsCopy en el actions")
 
             let dogsToFilter;
 
@@ -57,7 +69,7 @@ export const getDogsByName = (name) => {
 
                 const allDogs = await axios(`${baseUrl}/dogs`);
                 dogsToFilter = allDogs.data;
-                // console.log(dogsToFilter, "dogsToFilter")
+                console.log(dogsToFilter, "dogsToFilter")
             }
 
             const nameFilteredDogs = await axios(URL);
@@ -118,14 +130,23 @@ export const filterTemps = (temperament) => {
 
 
 export const getTemperaments = () => {
-    return (dispatch) => {
-        axios(`${baseUrl}/temperaments`)
-            .then(({ data }) => {
-                return dispatch({ type: GET_TEMPERAMENTS, payload: data })
-            })
-            .catch(error => console.log(error))
-    }
-}
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`${baseUrl}/temperaments`);
+
+            if (!Array.isArray(data)) {
+                throw new Error("Invalid response format for temperaments");
+            }
+
+            dispatch({
+                type: GET_TEMPERAMENTS,
+                payload: data,
+            });
+        } catch (error) {
+            console.error("GET_TEMPERAMENTS failed:", error.message);
+        }
+    };
+};
 
 // export const createDog = (dog) => {
 //     return async (dispatch) => {

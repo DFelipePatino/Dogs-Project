@@ -1,115 +1,89 @@
-import React, { useState, forwardRef, useRef, useImperativeHandle } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
 import Slider from "react-slick";
-import Card from '../Card/DogCard';
+import DogCard from "../Card/DogCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Button } from "@mui/material";
-import DogCard from "../Card/DogCard";
-// import './Cards.css';
+import './Cards.css';
 
 function CardsCarousel({ onClick, dogs, dogsFromDB }) {
+    const list = dogsFromDB?.length ? dogsFromDB : dogs || [];
+    console.log(list, 'la lista')
 
-    // console.log(dogs, 'dogs', 'at CardsCarousel');
+    // Don't enable infinite if we have fewer items than slides to show
+    const slidesToShow = 4;
+    const shouldInfinite = list.length > slidesToShow;
 
     const settings = {
-        arrows: true,
-        className: "center",
-        with: "100%",
-        centerMode: true,
-        centerPadding: "60px",
-        lazyLoad: true,
         dots: true,
-        infinite: true,
-        pauseOnHover: true,
-        adaptiveHeight: true,
-        autoplay: true,
+        arrows: true,
+        infinite: shouldInfinite,
+        centerMode: false,
+        autoplay: shouldInfinite,
         autoplaySpeed: 3000,
-        slidesToShow: 4,
+        pauseOnHover: true,
+        adaptiveHeight: false,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
-        // slidesPerRow: 2,
-        // rows: 2,
+        speed: 500,
+        cssEase: "ease-in-out",
         responsive: [
             {
-                breakpoint: 1000,
+                breakpoint: 1200,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    rows: 1,
-                    centerMode: false,
-                    pauseOnHover: true,
-                    arrows: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 800,
+                breakpoint: 900,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    rows: 1,
-                    centerMode: false,
-                    pauseOnHover: true,
-                    arrows: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 1
                 }
             },
-
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
-                    rows: 1,
-                    centerMode: false,
-                    pauseOnHover: true,
                     arrows: false,
+                    centerMode: true,
+                    centerPadding: '20px'
                 }
             }
         ]
     };
 
-    return (
-
-        dogsFromDB && dogsFromDB.length > 0 ? (
+    if (!list || list.length === 0) {
+        return (
             <div className="slider-container">
-
-                <Slider {...settings}
-                >
-                    <div className="cards-container">
-                        {dogsFromDB.map(dogDB =>
-                            <DogCard
-                                key={dogDB.id}
-                                dogDB={dogDB}
-                                onClick={onClick}
-                            />)}
-                    </div>
-
-                </Slider>
+                <p style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
+                    No dogs to display
+                </p>
             </div>
+        );
+    }
 
-        ) : (
-
-            <Slider {...settings}
-            >
-
-                {dogs?.map((dog) => (
-                    <div className='main-container' key={dog.id}>
-                        <div className="cards-container">
-                            <DogCard
-                                key={dog.id}
-                                id={dog.id}
-                                name={dog.name}
-                                image={dog.imagen}
-                                temperament={dog.temperaments}
-                                weight={dog.peso}
-                                onClick={onClick}
-                            />
-                        </div>
+    return (
+        <div className="slider-container">
+            <Slider {...settings}>
+                {list.map(dog => (
+                    <div className="slide" key={dog.id}>
+                        <DogCard
+                            dogDB={dog}
+                            id={dog.id}
+                            name={dog.name}
+                            image={dog.imagen}
+                            temperament={dog.temperaments}
+                            weight={dog.peso}
+                            onClick={onClick}
+                        />
                     </div>
                 ))}
-
             </Slider>
-        )
+        </div>
     );
 }
 
 export default CardsCarousel;
+

@@ -16,7 +16,7 @@ const HomePage = ({ onClick }) => {
     const [homePageGrow, setHomePageGrow] = useState(true);
 
     const dogs = useSelector((state) => state.dogsCopy);
-    // console.log("este es el estado global", dogs)
+    console.log("este es el estado global", dogs)
 
     const dogsFromDB = useSelector((state) => state.dogsDB);
 

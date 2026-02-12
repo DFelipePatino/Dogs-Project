@@ -1,11 +1,17 @@
 .form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+
+    min-height: 100vh;
+    padding: 2rem;
+
     background-color: #fdd979;
-    height: 100%;
+
+    box-sizing: border-box;
 }
+
 
 .form {
     display: flex;

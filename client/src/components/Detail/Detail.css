@@ -1,43 +1,110 @@
 .detail-container {
     display: flex;
-    justify-content: space-around;
-    background-color: #ffe59c;
-    height: 100vh;
-    width: 100vw;
-    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    min-height: 100vh;
+    width: 100%;
+
+    padding: 2rem;
+
+    background: linear-gradient(180deg, #ffe59c, #ffd166);
+    backdrop-filter: blur(6px);
 }
 
+/* IMAGE SECTION */
 .detail-container>.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex: 1;
 }
 
 .detail-container .image-container img {
-    width: 500px;
-    height: 400px;
-    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
 
+    border-radius: 24px;
+    object-fit: cover;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
+.detail-container .image-container img:hover {
+    transform: scale(1.02);
+}
+
+/* INFO SECTION */
 .detail-container>.info-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #ffd166;
-    border: 1px solid #000;
-    padding: 20px;
-    backdrop-filter: blur(10px);
+    align-items: flex-start;
 
+    flex: 1;
+    max-width: 500px;
+
+    background-color: rgba(255, 209, 102, 0.95);
+    padding: 2rem 2.5rem;
+
+    border-radius: 24px;
+    border: none;
+
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* TEXT SPACING */
+.info-container p {
+    margin: 0.4rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* LOADING STATE */
 .Loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    width: 100vw;
+
+    min-height: 100vh;
+    width: 100%;
+
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #e07a5f;
+
+    animation: pulse 1.4s infinite ease-in-out;
+}
+
+/* LOADING ANIMATION */
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .detail-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .detail-container>.info-container {
+        align-items: center;
+        text-align: center;
+    }
 }
