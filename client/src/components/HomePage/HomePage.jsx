@@ -1,10 +1,7 @@
-import React from 'react';
 import { Grow } from '@mui/material';
-import Cards from "../Cards/Cards";
 import CardsCarousel from '../Cards/CardsCarousel';
 import Pages from '../Pages/Pages';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -12,11 +9,11 @@ import './HomePage.css';
 
 const HomePage = ({ onClick }) => {
 
-    const [loadingShown, setLoadingShown] = useState(false);
-    const [homePageGrow, setHomePageGrow] = useState(true);
+    const loadingShown = false;
+    const homePageGrow = true;
 
     const dogs = useSelector((state) => state.dogsCopy);
-    console.log("este es el estado global", dogs)
+    // console.log("este es el estado global", dogs)
 
     const dogsFromDB = useSelector((state) => state.dogsDB);
 

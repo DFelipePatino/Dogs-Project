@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
@@ -13,11 +13,11 @@ const LandingPage = () => {
 
     const navigate = useNavigate();
 
-    const [useEffectState, setUseEffectState] = useState(false);
+
     const [loadingShown, setLoadingShown] = useState(false);
 
     const allDogs = useSelector(state => state.dogs);
-    console.log(allDogs, 'allDogs');
+    // console.log(allDogs, 'allDogs');
 
 
     // useEffect(() => {
@@ -30,28 +30,26 @@ const LandingPage = () => {
 
 
     const handleClick = () => {
-        setUseEffectState(true);
+        // setUseEffectState(true);
+
         Swal.fire({
-            title: 'Atención!',
+            title: '¡Atention!',
             html: `
-                This instance will spin down with inactivity, which can delay requests by a few seconds. Thank you for your patience.<br><br>
-                Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes por algunos segundos. Gracias por su paciencia.
-            `,
+            This instance will spin down with inactivity, which can delay requests by a few seconds. Thank you for your patience.<br><br>
+            Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes por algunos segundos. Gracias por su paciencia.
+          `,
             icon: 'warning',
-            showCancelButton: false,
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Entendido'
         }).then(() => {
-            if (allDogs.length === 0) {
-                setLoadingShown(true);
-                setTimeout(() => {
-                    alert("No dogs are coming from the data base")
-                }, 10000);
+            setLoadingShown(true);
+            if (allDogs.length > 0) {
+                console.log('dogs array > 0')
+                navigate('/home');
             } else {
-                setLoadingShown(true);
                 setTimeout(() => {
-                    navigate('/home');
-                }, 3000);
+                    alert("No dogs are coming from the database");
+                }, 70000);
             }
         });
     };

@@ -185,7 +185,7 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
                         </IconButton>
 
                         <Typography
-                            onClick={handleHomeClick}
+                            onClick={() => navigate("/home")}
                             variant="h6"
                             noWrap
                             component="div"

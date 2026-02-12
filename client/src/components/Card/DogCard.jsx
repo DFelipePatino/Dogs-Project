@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 const DogCard = ({ dogDB, image, onClick, id, name, temperament, weight, lifeSpan }) => {
 
 
-    console.log(dogDB)
+    // console.log(dogDB)
     return (
         dogDB ? (
             <div className='container-card'>

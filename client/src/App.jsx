@@ -31,11 +31,13 @@ function App() {
     dispatch(getDogs());
     // dispatch(getTemperaments());
     setReload(false);
+    // console.log('set reload', reload)
   }, [dispatch, reload]);
 
   const onHomeClick = () => {
     setReload(true);
     ([]);
+    // console.log('run')
   };
 
   const onClick = (id) => {
@@ -44,7 +46,7 @@ function App() {
 
   const onSearch = (termTrim) => {
     dispatch(getDogsByName(termTrim));
-    console.log(termTrim, 'termtrim in App')
+    // console.log(termTrim, 'termtrim in App')
   };
 
   const filterDogsByTemp = (dogTemp) => {

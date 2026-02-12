@@ -1,13 +1,14 @@
-import React from "react";
 import Slider from "react-slick";
 import DogCard from "../Card/DogCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Cards.css';
+import PropTypes from "prop-types";
+
 
 function CardsCarousel({ onClick, dogs, dogsFromDB }) {
     const list = dogsFromDB?.length ? dogsFromDB : dogs || [];
-    console.log(list, 'la lista')
+    // console.log(list, 'la lista')
 
     // Don't enable infinite if we have fewer items than slides to show
     const slidesToShow = 4;
@@ -83,7 +84,15 @@ function CardsCarousel({ onClick, dogs, dogsFromDB }) {
             </Slider>
         </div>
     );
+
 }
+
+CardsCarousel.propTypes = {
+    onClick: PropTypes.func,
+    dogs: PropTypes.array,
+    dogsFromDB: PropTypes.array,
+};
+
 
 export default CardsCarousel;
 

@@ -21,7 +21,7 @@ const FormPage = ({ alltemperaments, onHomeClick }) => {
     const [pesoMax, setPesoMax] = useState('');
     const [imagen, setImagen] = useState('');
     const [temperamentNames, setTemperamentNames] = useState([]);
-    console.log(temperamentNames, "temperamentNames")
+    // console.log(temperamentNames, "temperamentNames")
 
     const dispatch = useDispatch();
 

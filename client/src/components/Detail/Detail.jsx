@@ -56,23 +56,29 @@ const Detail = () => {
                 <Card
                     sx={{
                         width: "100%",
+                        height: "100%",
                         backgroundColor: "#e07a5f",
                         borderRadius: 10,
                         boxShadow: 3,
                     }}
                 >
                     <CardMedia
+                        component="img"
                         sx={{
-                            height: {
+                            width: "100%",
+                            maxHeight: {
                                 xs: 300,
                                 sm: 400,
                                 md: 500,
                                 lg: 600,
                             },
+                            objectFit: "contain",
+                            backgroundColor: "#f5f5f5",
                         }}
                         image={dog.image?.url}
-                        title={dog.name}
+                        alt={dog.name}
                     />
+
 
                     <CardContent>
                         <Typography gutterBottom variant="h4">
