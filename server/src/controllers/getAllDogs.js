@@ -24,7 +24,7 @@ if (!API_KEY) {
 const URL = "https://api.thedogapi.com/v1/breeds";
 
 const getAllDogs = async () => {
-    console.log("get dogs ran")
+    // console.log("get dogs ran")
     const { data } = await axios.get(URL, {
         headers: {
             "X-Api-Key": process.env.API_KEY
@@ -46,7 +46,7 @@ const getAllDogs = async () => {
 
     // const allDogs = [...allDogsDB, ...dogMap]
     const allDogs = [...dogMap]
-    console.log(allDogs, 'perros en el controllerr')
+    // console.log(allDogs, 'perros en el controllerr')
     return allDogs
 
 }
