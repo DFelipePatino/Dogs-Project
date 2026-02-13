@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Grow } from "@mui/material";
 import "./Detail.css";
 
 const Detail = () => {
@@ -14,6 +14,9 @@ const Detail = () => {
 
     const baseUrl = "https://dogs-project-d53t.onrender.com";
     // const baseUrl = "http://localhost:3001";
+
+    const loadingShown = false;
+    const homePageGrow = true;
 
     useEffect(() => {
         axios
@@ -43,74 +46,80 @@ const Detail = () => {
                 paddingTop: "60px",
             }}
         >
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    width: "100%",
-                    maxWidth: 1000,
-                    padding: "0 20px",
-                }}
+            <Grow
+                in={homePageGrow}
+                style={{ transformOrigin: '1 1 1' }}
+                {...(loadingShown ? { timeout: 1500 } : {})}
             >
-                <Card
+                <Box
                     sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
                         width: "100%",
-                        height: "100%",
-                        backgroundColor: "#e07a5f",
-                        borderRadius: 10,
-                        boxShadow: 3,
+                        maxWidth: 1000,
+                        padding: "0 20px",
                     }}
                 >
-                    <CardMedia
-                        component="img"
+                    <Card
                         sx={{
                             width: "100%",
-                            maxHeight: {
-                                xs: 300,
-                                sm: 400,
-                                md: 500,
-                                lg: 600,
-                            },
-                            objectFit: "contain",
-                            backgroundColor: "#f5f5f5",
+                            height: "100%",
+                            backgroundColor: "#e07a5f",
+                            borderRadius: 10,
+                            boxShadow: 3,
                         }}
-                        image={dog.image?.url}
-                        alt={dog.name}
-                    />
+                    >
+                        <CardMedia
+                            component="img"
+                            sx={{
+                                width: "100%",
+                                maxHeight: {
+                                    xs: 300,
+                                    sm: 400,
+                                    md: 500,
+                                    lg: 600,
+                                },
+                                objectFit: "contain",
+                                backgroundColor: "#f5f5f5",
+                            }}
+                            image={dog.image?.url}
+                            alt={dog.name}
+                        />
 
 
-                    <CardContent>
-                        <Typography gutterBottom variant="h4">
-                            {dog.name}
-                        </Typography>
+                        <CardContent>
+                            <Typography gutterBottom variant="h4">
+                                {dog.name}
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Temperament: {dog.temperament || "N/A"}
-                        </Typography>
+                            <Typography variant="body1">
+                                Temperament: {dog.temperament || "N/A"}
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Weight: {dog.weight?.metric || "N/A"} kg
-                        </Typography>
+                            <Typography variant="body1">
+                                Weight: {dog.weight?.metric || "N/A"} kg
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Height: {dog.height?.metric || "N/A"} cm
-                        </Typography>
+                            <Typography variant="body1">
+                                Height: {dog.height?.metric || "N/A"} cm
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Breed Group: {dog.breed_group || "N/A"}
-                        </Typography>
+                            <Typography variant="body1">
+                                Breed Group: {dog.breed_group || "N/A"}
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Bred for: {dog.bred_for || "N/A"}
-                        </Typography>
+                            <Typography variant="body1">
+                                Bred for: {dog.bred_for || "N/A"}
+                            </Typography>
 
-                        <Typography variant="body1">
-                            Life Span: {dog.life_span || "N/A"}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </Box>
+                            <Typography variant="body1">
+                                Life Span: {dog.life_span || "N/A"}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Box>
+            </Grow>
         </Container>
     );
 };
