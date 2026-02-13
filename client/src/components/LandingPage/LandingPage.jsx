@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
@@ -12,25 +12,24 @@ import Swal from 'sweetalert2';
 const LandingPage = () => {
 
     const navigate = useNavigate();
-
-
+    const [useEffectState, setUseEffectState] = useState(false)
     const [loadingShown, setLoadingShown] = useState(false);
 
     const allDogs = useSelector(state => state.dogs);
     // console.log(allDogs, 'allDogs');
 
 
-    // useEffect(() => {
-    //     if (useEffectState && allDogs.length > 0) {
-    //         navigate('/home');
-    //     }
-    // }, [useEffectState, allDogs.length]
-    // );
+    useEffect(() => {
+        if (useEffectState && allDogs.length > 0) {
+            navigate('/home');
+        }
+    }, [useEffectState, allDogs.length, navigate]
+    );
 
 
 
     const handleClick = () => {
-        // setUseEffectState(true);
+        setUseEffectState(true);
 
         Swal.fire({
             title: '¡Atention!',
