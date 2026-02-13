@@ -30,27 +30,28 @@ const LandingPage = () => {
 
     const handleClick = () => {
         setUseEffectState(true);
+        if (allDogs.length === 0) {
+            Swal.fire({
+                title: '¡Atention!',
+                html: `
+                This instance will spin down with inactivity, which can delay requests by a few seconds. Thank you for your patience.<br><br>
+                Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes por algunos segundos. Gracias por su paciencia.
+              `,
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Entendido'
+            }).then(() => {
+                setLoadingShown(true);
+                if (allDogs.length > 0) {
+                    navigate('/home');
+                } else {
+                    setTimeout(() => {
+                        alert("No dogs are coming from the database, please try again.");
+                    }, 70000);
+                }
+            });
+        }
 
-        Swal.fire({
-            title: '¡Atention!',
-            html: `
-            This instance will spin down with inactivity, which can delay requests by a few seconds. Thank you for your patience.<br><br>
-            Esta instancia se detendrá por inactividad, lo que puede retrasar las solicitudes por algunos segundos. Gracias por su paciencia.
-          `,
-            icon: 'warning',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Entendido'
-        }).then(() => {
-            setLoadingShown(true);
-            if (allDogs.length > 0) {
-                console.log('dogs array > 0')
-                navigate('/home');
-            } else {
-                setTimeout(() => {
-                    alert("No dogs are coming from the database");
-                }, 70000);
-            }
-        });
     };
 
 
