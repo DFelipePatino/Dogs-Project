@@ -171,7 +171,13 @@ export default function SearchAppBar({ onSearch, onHomeClick, alltemperaments, f
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="fixed">
+                <AppBar position="fixed" sx={{ 
+                    background: 'var(--glass-bg)', 
+                    backdropFilter: 'blur(var(--glass-blur))', 
+                    borderBottom: '1px solid var(--glass-border)', 
+                    boxShadow: 'var(--glass-shadow)', 
+                    color: 'var(--text-primary)' 
+                }}>
                     <Toolbar>
                         <IconButton
                             size="large"

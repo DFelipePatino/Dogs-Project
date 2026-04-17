@@ -65,9 +65,13 @@ const Detail = () => {
                         sx={{
                             width: "100%",
                             height: "100%",
-                            backgroundColor: "#e07a5f",
-                            borderRadius: 10,
-                            boxShadow: 3,
+                            background: 'var(--glass-bg)',
+                            backdropFilter: 'blur(var(--glass-blur))',
+                            WebkitBackdropFilter: 'blur(var(--glass-blur))',
+                            borderRadius: 'var(--radius-lg)',
+                            border: '1px solid var(--glass-border)',
+                            color: 'var(--text-primary)',
+                            boxShadow: 'var(--glass-shadow)',
                         }}
                     >
                         <CardMedia
@@ -81,7 +85,7 @@ const Detail = () => {
                                     lg: 600,
                                 },
                                 objectFit: "contain",
-                                backgroundColor: "#f5f5f5",
+                                backgroundColor: "transparent",
                             }}
                             image={dog.image?.url}
                             alt={dog.name}

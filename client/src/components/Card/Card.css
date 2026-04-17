@@ -3,25 +3,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
     margin: 0 auto;
     width: 100%;
     max-width: 280px;
     min-height: 352px;
     height: auto;
-    background-color: #e07a5f;
-    color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    color: var(--text-primary);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, border 0.3s ease;
     overflow: hidden;
     padding: 20px;
     box-sizing: border-box;
 }
 
 .container-card:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(6, 182, 212, 0.25);
+    transform: translateY(-8px);
+    border: 1px solid rgba(6, 182, 212, 0.5); /* var(--accent-cyan) with opacity */
 }
 
 .container-card h2 {
@@ -91,7 +94,7 @@
     width: 100%;
     text-align: center;
     padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--glass-border);
 }
 
 .weight p {

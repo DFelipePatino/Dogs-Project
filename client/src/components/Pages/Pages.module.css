@@ -39,18 +39,22 @@
 
 .pageLink {
     text-decoration: none;
-    padding: 5px 10px;
-    background-color: rgb(25, 118, 210);
-    color: #000000;
-    border-radius: 5px;
+    padding: 8px 16px;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    -webkit-box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
-    -moz-box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
-    box-shadow: 16px 13px 33px -11px rgba(105, 101, 105, 1);
+    box-shadow: var(--glass-shadow);
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .pageLink:hover {
-    background-color: #f69393;
+    background: var(--accent-gradient);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* @media screen and (max-width: 1000px) {

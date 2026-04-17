@@ -1,18 +1,28 @@
 .Sort {
     display: flex;
     justify-content: center;
-
     align-items: center;
-
     margin: 20px;
 }
 
 select {
     width: 100%;
-
-    padding: 10px;
-    border: 1px solid #e07a5f;
-
-    border-radius: 5px;
+    padding: 10px 16px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
     margin-right: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+}
+
+select option {
+    background: var(--bg-color);
+    color: var(--text-primary);
 }

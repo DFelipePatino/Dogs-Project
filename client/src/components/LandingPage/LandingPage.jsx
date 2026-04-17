@@ -58,7 +58,7 @@ const LandingPage = () => {
     return (
         <div className="landing-page">
             {!loadingShown ? (
-                <>
+                <div className="landing-content glass-panel">
                     <div>
                         <h1 className="mainH1">Dogs API</h1>
                     </div>
@@ -68,7 +68,7 @@ const LandingPage = () => {
                             handleClick();
                         }}>Home</Button>
                     </div>
-                </>
+                </div>
             ) : (
                 <Grow
                     in={loadingShown}

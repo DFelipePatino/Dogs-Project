@@ -5,7 +5,7 @@ function SearchBar({ onSearch }) {
     const [term, setTerm] = useState('');
 
     const termTrim = term.trim();
-    console.log("este es el termtrim", termTrim)
+    // console.log("este es el termtrim", termTrim)
 
     const onSubmit = (event) => {
         event.preventDefault();

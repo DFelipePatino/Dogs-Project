@@ -2,16 +2,27 @@
 
 .landing-page {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-image: url('../../assets/cute-dogs-background.jpg');
+    /* Keep existing background but add a dark overlay */
+    background-image:
+
+        url('../../assets/cute-dogs-background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-blend-mode: overlay;
     margin: 0;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 4rem;
+    text-align: center;
 }
 
 .loading {
@@ -21,30 +32,40 @@
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-color: #ffd166;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
 }
 
 .mainH1 {
-    font-size: 36px;
-    color: #ffffff;
-    /* Light Brown */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .homeButton {
-    margin-top: 20px;
+    margin-top: 1rem;
 }
 
-.homeButton button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+.homeButton button,
+.homeButton .MuiButton-root {
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    background: var(--accent-gradient);
+    color: white;
+    text-transform: none;
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #e07a5f;
-    /* Darker shade of brown on hover */
+.homeButton button:hover,
+.homeButton .MuiButton-root:hover {
+    background: var(--accent-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
 }
